@@ -1,9 +1,15 @@
 \documentclass[12pt,openany,oneside,a4paper,brazil]{abntex2}
 %article,beamer,book,,letter,abnTeX2| 
-
-\usepackage[utf8]{inputenc} % Permite digitar acentos normalmente no código
-\usepackage[T1]{fontenc}    % Ajusta a codificação das fontes para o PDF
+\renewcommand{\tt}{\ttfamily}
+\usepackage[utf8]{inputenc} % permite digitar acentos normalmente no código
+\usepackage[T1]{fontenc}    % ajusta a codificação das fontes para o PDF
 \usepackage[brazil]{babel}
+\usepackage{graphicx} % pacote para carregar imagens
+\usepackage{float}
+\usepackage{indentfirst}
+\hypersetup{hidelinks}
+\usepackage[alf]{abntex2cite} % citações padrão ABNT 
+\providecommand{\htmladdnormallink}[2]{\href{#2}{#1}}
 
 %variavies que serao usada na construção do relatorio
 \titulo{Relatório de Estágio}
@@ -12,7 +18,7 @@
 \instituicao{Instituto Federal de Educação, Ciência e Tecnologia da Bahia -- Campus Feira de Santana}
 \local{Feira de Santana -- BA}
 \preambulo{Relatório de Estágio supervisionado apresentado ao curso de Bacharelado em Sistemas de Informação do Instituto Federal de Educação, Ciência e Tecnologia da Bahia -- Campus Feira de Santana, como requisito parcial para avaliação e conclusão da disciplina.}
-\orientador{Fernanda}
+\orientador{Fernanda Castelo Branco de Santana}
 
 
 % --- CUSTOMIZAÇÃO DA CAPA ---
@@ -56,7 +62,7 @@
       \vspace*{\fill}
     }%
     
-    % A instrução que imprimia a instituição centralizada foi removida daqui
+    %  instrução que imprimia a instituição centralizada foi removida daqui
     
     {\large\imprimirorientadorRotulo~\imprimirorientador\par}
     \abntex@ifnotempty{\imprimircoorientador}{%
@@ -71,7 +77,8 @@
   \end{center}
 }
 \makeatother
-
+\setlength{\cftchapternumwidth}{1.5cm} % Ajusta o espaço dos capítulos 
+\setlength{\cftsectionnumwidth}{1.5cm} % Ajusta o espaço das seções 
 \begin{document}
 %-------------------------------------------------------%
 %Elementos agora pre-textuais como capa e contra capa
@@ -79,47 +86,134 @@
 \imprimircapa
 \imprimirfolhaderosto
 \newpage
-\tableofcontents*
-\imprimirorientadorRotulo
 \begin{resumo}
+O presente relatório apresenta as atividades técnicas e operacionais desenvolvidas ao longo de seis meses de estágio supervisionado na empresa Allure Informática, localizada em Feira de Santana -- BA, como requisito parcial da disciplina do curso de Bacharelado em Sistemas de Informação do Instituto Federal de Educação, Ciência e Tecnologia da Bahia (IFBA). O estágio teve como objetivo principal proporcionar a primeira imersão profissional formal na área de Tecnologia da Informação, permitindo aplicar na prática os conhecimentos teóricos adquiridos na graduação e desenvolver competências essenciais para o ambiente corporativo e de assistência técnica. Durante o período, foram executadas atividades diversificadas de suporte técnico (Help Desk) presencial e remoto via AnyDesk, abrangendo desde a montagem e análise arquitetural de compatibilidade de hardware em microcomputadores até o diagnóstico lógico e reparo estrutural de notebooks, incluindo equipamentos de arquitetura complexa como MacBooks. No âmbito de sistemas operacionais e redes, atuou-se na manutenção preventiva e corretiva de impressoras compartilhadas em servidores, recuperação de sistemas Windows e Linux por meio de ferramentas de linha de comando (CMD, PowerShell e Bash) e otimização de desempenho de estações de trabalho. Paralelamente às rotinas de bancada, aplicaram-se conceitos de desenvolvimento de software e automação na criação de arquivos de implantação desassistida em XML (\textit{autounattend.xml}). Como resultado, a experiência consolidou uma visão sistêmica da infraestrutura de TI, aprimorando a capacidade analítica de resolução de problemas, a autonomia técnica e a eficiência operacional na entrega de soluções tecnológicas.
+
 \vspace{\onelineskip}
 \noindent
-\textbf{Palavras-chave}: latex. abntex. editoração de texto.
+\textbf{Palavras-chave}: Estágio Supervisionado. Sistemas de Informação. Suporte Técnico. Manutenção de Hardware. Automação de Processos.
 \end{resumo}
+\newpage
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+\setlength{\cftchapternumwidth}{1.2cm}
+\setlength{\cftsectionnumwidth}{1.2cm}
+\setlength{\cftlastnumwidth}{1.2cm}
+\tableofcontents*
 
 %-------------------------------------------------------%
 %ELEMENTOS TEXTUAIS%
 \textual
 
 \chapter{Introdução}
+\indent O presente relatório descreve as experiências adquiridas ao longo de seis meses de estágio na empresa Allure Informática. Meu principal objetivo ao ingressar na organização foi conquistar uma primeira vivência profissional formal na área de Tecnologia da Informação. Embora já possuísse conhecimentos prévios adquiridos de forma autodidata e pessoal, buscava uma oportunidade estruturada logo no início da graduação em Sistemas de Informação para consolidar minha formação prática e construir uma base sólida para o mercado de trabalho.
 
+Durante esse período, pude atuar em diversas frentes operacionais, incluindo atendimento de Help Desk, manutenção de impressoras, formatação e instalação de sistemas operacionais (Windows e Linux), limpeza preventiva, montagem e organização interna de computadores, crimpagem de cabos de rede e configuração de endereçamento IP para dispositivos compartilhados. Considero esse conjunto de atividades fundamental para compreender a infraestrutura física e lógica que sustenta o ambiente de TI.
+
+Embora o foco principal da empresa seja a assistência técnica e o suporte, busquei aplicar continuamente os conhecimentos de programação adquiridos na faculdade para otimizar rotinas internas. Nesse sentido, iniciei o desenvolvimento de projetos voltados à automação e gestão do negócio, tais como um sistema para automação de anúncios na plataforma OLX, um catálogo digital, um sistema de controle de caixa e financeiro, além da padronização dos processos de formatação com instalação automatizada de softwares e ativação de sistema.
+\begin{figure}[H]%here,top,button vai encaixar a imagem no melhor canto sem quebrar tudo
+    \centering
+    \caption{Logo da Allure Informática}
+    \includegraphics[width=0.55\textwidth]{allure.jpeg}%textwidth faz a imagem ficar enquadrada sem quebrar as margens
+    \fonte{Acervo pessoal}
+\end{figure}
 \chapter{Desenvolvimento}
-\section{teste}
+
+\section{Instalação de Peças em Computadores}
+\indent Durante o estágio na Allure Informática, uma das minhas atividades principais foi a montagem, configuração e adaptação de microcomputadores. Na prática, eu era responsável por instalar processadores e verificar a viabilidade técnica de upgrades e novas montagens, assegurando a total compatibilidade entre placa-mãe, processador, módulos de memória RAM e placas de vídeo.
+Esse processo de análise exigia a leitura técnica das especificações a partir do código de modelo dos componentes. Ao avaliar uma placa-mãe, por exemplo, a própria nomenclatura já fornece as diretrizes de sua arquitetura: o prefixo alfabético costuma indicar a linha de construção e recursos de energia (VRM), enquanto os dígitos numéricos apontam o chipset e a geração de hardware suportada. A partir dessa identificação, tornava-se possível determinar o soquete físico do processador, a frequência e o padrão de memória RAM aceitos, bem como a geração das interfaces de expansão (PCI Express) e armazenamento (M.2/SATA), evitando gargalos ou incompatibilidades na montagem.
+\begin{figure}[H]
+  \centering
+  \caption{Maquina após instalação de water cooler}
+  \includegraphics[width=0.50\textwidth]{imagem_computador.jpeg}
+  \fonte{Acervo pessoal}
+\end{figure}
+
+\section{Manutenção em Notebooks}
+  \indent Além disso, o reparo de notebooks e eletrônicos diversos foi fundamental para consolidar minha capacidade de diagnóstico e resolução de problemas. O processo exigia não apenas a intervenção técnica, mas também a execução sistemática de testes de qualidade pós-reparo para validar a estabilidade do equipamento. Lidar com diferentes modelos de notebooks demonstrou a importância da análise estrutural: mesmo diante de uma placa-mãe desconhecida, o mapeamento visual e lógico dos circuitos permite compreender o sistema gradualmente e identificar a origem da falha. Esse amadurecimento prático possibilitou que eu evoluísse para manutenções de alta complexidade, incluindo intervenções em MacBooks, que possuem uma engenharia interna bastante refinada.
+\begin{figure}[H]
+  \centering
+  \caption{Realizando preventiva no Macbook }
+  \includegraphics[width=0.55\textwidth, angle=+90]{mac.jpeg}
+  \fonte{Acervo pessoal}
+\end{figure}
+
+\section{Sistemas Operacionais}
+
+\indent Nem todas as demandas atendidas no balcão tinham origem física; grande parte dos chamados envolvia falhas lógicas, corrupção de arquivos ou configurações inadequadas nos sistemas operacionais dos clientes. Para diagnosticar e solucionar esses cenários sem recorrer imediatamente à formatação, utilizei amplamente ferramentas de linha de comando, como o Prompt de Comando (CMD) e o PowerShell no ambiente Windows, além do terminal Bash em distribuições Linux e no macOS.
+
+Muitas vezes, alterações acidentais feitas pelo próprio usuário ou atualizações mal-sucedidas transformavam falhas simples em problemas complexos de inicialização e desempenho. No Windows, o uso de utilitários nativos via terminal mostrou-se indispensável: comandos como \texttt{sfc /scannow} (para verificar e restaurar arquivos protegidos do sistema), \texttt{DISM /Online /Cleanup-Image /RestoreHealth} (para reparar a imagem do sistema) e \texttt{chkdsk} (para diagnosticar erros no disco) permitiram recuperar sistemas operacionais preservando os dados dos clientes.
+
+Além disso, durante os processos de reinstalação limpa do Windows 11, o domínio de comandos na etapa inicial de configuração (OOBE -- \textit{Out-of-Box Experience}), como o comando \texttt{oobe\textbackslash bypassnro}, possibilitou contornar restrições de conectividade obrigatória e agilizar a criação de contas locais. A partir dessa rotina, iniciei um estudo aprofundado sobre a automação da implantação do sistema utilizando arquivos de resposta desassistida (\texttt{autounattend.xml}). Estruturados em XML (\textit{Extensible Markup Language}), esses arquivos permitem pré-configurar partições, idioma, remoção de aplicativos desnecessários (\textit{bloatwares}) e instalação automática de pacotes essenciais, reduzindo significativamente o tempo operacional da bancada.
+\begin{figure}[H]
+  \centering
+  \caption{Note após instalação do sistema operacional Linux Mint XFCE}
+  \includegraphics[width=0.55\textwidth]{linux_mint.jpeg}
+  \fonte{Acervo pessoal}
+\end{figure}
+
+\section{Manutenção de Impressoras}
+\indent O atendimento voltado a impressoras também representou um aprendizado importante durante o estágio, unindo diagnósticos de hardware e configuração de rede. Em diversos chamados, fui responsável por configurar a comunicação dos equipamentos com os servidores dos clientes, ajustando protocolos de rede, filas de impressão (\textit{spooler}) e permissões de acesso compartilhado.
+
+Já na bancada, as intervenções físicas concentravam-se na resolução de entupimentos, falhas de impressão, reposição de suprimentos e diagnóstico de sensores lógicos defeituosos. Além da manutenção preventiva periódica, executávamos processos de \textit{reset} lógico para zerar contadores de impressões e desbloquear equipamentos travados por limite de uso, devolvendo-os em condições ideais de operação.
+\begin{figure}[H]
+  \centering
+  \caption{Desentupimento profundo de cabeça de impressão}
+  \includegraphics[width=0.55\textwidth,angle=+90]{cabeça_de_impressao.jpeg}
+  \fonte{Acervo Pessoal}
+\end{figure}
+
+\section{Suporte Remoto e Atendimento via AnyDesk}
+\indent Além do atendimento presencial na bancada, grande parte das demandas diárias era solucionada à distância por meio da ferramenta de acesso remoto AnyDesk. Essa modalidade de suporte exigia agilidade no diagnóstico e comunicação clara com o usuário para resolver incidentes sem a necessidade de deslocamento técnico ou retirada do equipamento.
+
+Os chamados atendidos remotamente abrangiam desde configurações rotineiras até falhas críticas de operação, incluindo:
+
+\begin{itemize}
+    \item \textbf{Otimização e desempenho:} diagnóstico de lentidão extrema por meio da análise do Gerenciador de Tarefas, desativação de programas desnecessários na inicialização do sistema, limpeza de arquivos temporários, verificação de espaço em disco e ajustes de planos de energia;
+    \item \textbf{Conectividade e impressão:} reinstalação e atualização de drivers, reinicialização do serviço de \textit{spooler} de impressão, mapeamento de pastas compartilhadas e restabelecimento da comunicação com impressoras em rede;
+    \item \textbf{Disponibilidade de sistemas e softwares:} suporte a sistemas de gestão ou aplicativos corporativos fora do ar, envolvendo a verificação de serviços locais em execução, limpeza de cache de navegadores, atualização de certificados digitais e ajustes de permissões de firewall;
+    \item \textbf{Configurações gerais e orientação:} instalação remota de softwares utilitários, configuração de clientes de e-mail, ajustes de periféricos e instrução direta aos usuários sobre boas práticas de uso no dia a dia.
+\end{itemize}
+\begin{figure}[H]
+  \centering
+  \caption{Exemplificação de um chamado}
+  \includegraphics[width=0.65\textwidth]{assistencia tecnica.jpeg}
+  \fonte{Acervo Pessoal}
+\end{figure}
 
 \chapter{Conclusão}
+
+\indent A realização do estágio supervisionado ao longo de seis meses na Allure Informática representou uma etapa fundamental para minha formação acadêmica e ingresso profissional na área de Tecnologia da Informação. Ao iniciar essa experiência logo nos primeiros períodos do curso de Bacharelado em Sistemas de Informação, alcancei o objetivo de transformar conhecimentos prévios e autodidatas em vivência prática estruturada, compreendendo a dinâmica real de um ambiente de assistência técnica e suporte corporativo.
+
+No âmbito técnico, a rotina diária permitiu desenvolver uma visão sistêmica que abrange desde a camada física até a camada lógica dos equipamentos. A análise arquitetural para montagem e upgrade de microcomputadores, o diagnóstico minucioso em notebooks e MacBooks, bem como a manutenção mecânica e configuração em rede de impressoras, fortaleceram meu raciocínio lógico e minha metodologia de resolução de problemas sempre pautada em diagnósticos precisos e testes de qualidade pós-reparo.
+
+Paralelamente, o atendimento de Help Desk presencial e remoto via AnyDesk evidenciou a importância da agilidade operacional e da comunicação clara com o usuário final. A resolução de falhas em sistemas operacionais Windows e Linux por meio de ferramentas de linha de comando, aliada à otimização de desempenho de estações de trabalho, demonstrou que o domínio técnico sobre o sistema operacional evita intervenções drásticas e garante maior disponibilidade para os clientes.
+
+Por fim, mesmo em um ambiente voltado majoritariamente ao suporte e à manutenção, a busca por aplicar os conceitos de programação da graduação resultou em iniciativas concretas de melhoria interna, como a automação da implantação do Windows via arquivos \texttt{autounattend.xml} e o desenvolvimento de ferramentas para controle financeiro e automações que ainda estão em desenvolvimento inicial. Dessa forma, o estágio não apenas consolidou minha base técnica e profissional, mas também reforçou a relevância da padronização e da automação como pilares para a eficiência na área de TI.
 % no section ele tem 2 parametros onde o primeiro é 
 %o nome que ficara no sumario usando [] para este caso
 %\section*{nome da seção}
 %-------------------------------------------------------%
 %ELEMENTOS POS-TEXTUAIS
 \postextual
-
+\nocite{microsoft_unattend,anydesk2026,abntex2_2018}
+\bibliography{referencias}
 \end{document}
-
 % à esquerda	flushleft
 % à direita	flushright
 % centralizado	center
 
 % estilo	Comando para trecho	Comando para bloco
-% monespaçado	\texttt{texto}	{ \ttfamily texto }
-% sans-serif	\textsf{texto}	{ \sffamily texto }
+% monespaçado	\texttt{texto}{ \ttfamily texto 
+% sans-serif	\textsf{texto}	{ \sffamily texto 
 % serif	\textrm{texto}	{ \rmfamily texto }
-% negrito	\textbf{texto}	{ \bfseries texto }
-% itálico	\textit{texto}	{ \itshape texto }
-% inclinado	\textsl{texto}	{ \slshape texto }
-% maiúsculas	\textsc{texto}	{ \scshape texto }
-% sublinhado	\underline{texto}	não tem
-% enfatizado	\emph{texto}	não tem
+% negrito	\textbf{texto}	{ \bfseries texto 
+% itálico	\textit{texto}	{ \itshape texto 
+% inclinado	\textsl{texto}	{ \slshape texto 
+% maiúsculas	\textsc{texto}	{ \scshape texto 
+% sublinhado	\underline{texto	não tem
+% enfatizado	\emph{texto	não tem
 
 % \tiny
 % \scriptsize
@@ -135,3 +229,11 @@
 % \vspace{2cm} (adiciona 2 centímetros de espaço vertical).
 
 % \hspace{10pt} (adiciona 10 pontos de espaço horizontal).
+
+% \begin{siglas}
+% \item[Fig.] Area of the $i^{th}$ component
+% 30
+% \item[456] Isto éum número
+% \item[123] Isto éoutro número
+% \item[lauro cesar] este éo meu nome
+% \end{siglas}
